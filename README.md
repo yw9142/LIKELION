@@ -9,3 +9,5 @@ LIKE LION 8th Session
 #4 Django - dreamary project
 
 #5 [Django - Mask notification](Mask_notification/README.md)
+
+#6 Django - CRUD

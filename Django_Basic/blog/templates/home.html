@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<p></p>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Date</th>
+        <th scope="col">Body</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for post in posts.all %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td><a href="{% url 'detail' post.id %}">{{ post.title }}</a></td>
+            <td>{{ post.pub_date }}</td>
+            <td>{{ post.summary }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    <a href="{% url 'new' %}">Add Post</a>
+</table>
+</body>
+</html>
