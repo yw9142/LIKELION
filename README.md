@@ -1,13 +1,13 @@
 LIKE LION 8th Session
 
-#1 Python Basic
+#0. [GIT](github.md)
 
-#2 WEB Basic
+#1. Python Basic
 
-#3 Django_Basic
+#2. WEB Basic / UI-UX
 
-#4 Django - dreamary project
+#3. Django_Basic - CRUD
 
-#5 [Django - Mask notification](Mask_notification/README.md)
+#4. Django - dreamary project
 
-#6 Django - CRUD
+#5. [Django - Mask notification](Mask_notification/README.md)
