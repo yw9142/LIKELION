@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from .models import Post
@@ -9,7 +10,11 @@ from .models import Post
 
 def home(request):
     posts = Post.objects
-    return render(request, 'home.html', {'posts': posts})
+    posts_list = Post.objects.all()
+    paginator = Paginator(posts_list, 3)
+    page = request.GET.get('page')
+    posts_num = paginator.get_page(page)
+    return render(request, 'home.html', {'blog': posts, 'posts': posts_num})
 
 
 def detail(request, post_id):
@@ -27,4 +32,10 @@ def create(request):
     post.body = request.GET['body']
     post.pub_date = timezone.datetime.now()
     post.save()
-    return redirect('/' + str(post.id))
+    return redirect('/blog/' + str(post.id))
+
+
+def delete(request, post_id):
+    post_num = get_object_or_404(Post, pk=post_id)
+    post_num.delete()
+    return redirect('/')
