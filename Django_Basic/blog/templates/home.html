@@ -1,105 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link
-            href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
-            rel="stylesheet"
-            id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- bootstrap4 CSS CDN 부분 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+
 </head>
+
 <body>
-<nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Likelion8th</a>
-    <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">
-                    <i class="fa fa-home"></i>
-                    Home
-                    <span class="sr-only">(current)</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    Link
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">
-                    Disabled
-                </a>
-            </li>
-        </ul>
-        <ul class="navbar-nav ">
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    Test
-                </a>
-            </li>
-        </ul>
-    </div>
-</nav>
-
-{#<tbody>#}
-{#{% for post in posts.all %}#}
-{#    <tr>#}
-{#        <td>{{ forloop.counter }}</td>#}
-{#        <td><a href="{% url 'detail' post.id %}">{{ post.title }}</a></td>#}
-{#        <td>{{ post.pub_date }}</td>#}
-{#        <td>{{ post.summary }}</td>#}
-{#    </tr>#}
-{#{% endfor %}#}
-{#</tbody>#}
-{##}
-{#        {% for post in posts.all %}#}
-{#            <div class="container">#}
-{#                <h1>{{ post.title }}</h1>#}
-{#                <p>{{ post.pub_date }}</p>#}
-{#                <p>{{ post.body }}</p>#}
-{#            </div>#}
-{#        {% endfor %}#}
-
-{% for blog in posts_num %}
-    <br>
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">{{ blog.title }}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">{{ blog.pub_date }}</h6>
-            <p class="card-text">{{ blog.summary }}</p>
-            <a href="{% url 'detail' blog.id %}" class="card-link">...more</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}">Likelion8th</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ml-auto">
+                <a class="nav-item nav-link active" href="{% url 'home' %}">Home</span></a>
+                <a class="nav-item nav-link" href="#">Blog</a>
+                <a class="nav-item nav-link" href="#">내정보</a>
+            </div>
         </div>
     </div>
-{% endfor %}
+</nav>
+<!-- bootstrap4 js관련 CDN 부분 -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
 
-{% if posts.has_previous %}
-    <a href="?page=1">First</a>
-    <a href="?page={{ posts_num.previous_page_number }}">Previous</a>
-{% endif %}
+{% block content %}
+    <div class="container">
+        {% for post in post %}
+            <br>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ post.title }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ blog.pub_date }}</h6>
+                    <p class="card-text">{{ post.summary }}</p>
+                    <a href="{% url 'detail' post.id %}" class="card-link">...more</a>
+                </div>
+            </div>
+        {% endfor %}
 
-<span>{{ posts_num.number }}</span>
-<span>of</span>
-<span>{{ posts_num.paginator.num_pages }}</span>
+        <div style="text-align:center">
+            <a href="{% url 'new' %}">Add Post</a>
+        </div>
 
-{% if posts_num.has_next %}
-    <a href="?page={{ posts_num.next_page_number }}">Next</a>
-    <a href="?page={{ posts_num.paginator.num_pages }}">Last</a>
-{% endif %}
+        {% if post.has_previous %}
+            <a href="?page=1">First</a>
+            <a href="?page={{ post.previous_page_number }}">Previous</a>
+        {% endif %}
 
-<a href="{% url 'new' %}">Add Post</a>
+        <span>{{ post.number }}</span>
+        <span>of</span>
+        <span>{{ post.paginator.num_pages }}</span>
+
+        {% if post.has_next %}
+            <a href="?page={{ post.next_page_number }}">Next</a>
+            <a href="?page={{ post.paginator.num_pages }}">Last</a>
+        {% endif %}
+    </div>
+
+{% endblock %}
+
+
 </body>
+
 </html>

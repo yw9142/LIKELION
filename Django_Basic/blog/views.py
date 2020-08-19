@@ -14,7 +14,7 @@ def home(request):
     paginator = Paginator(posts_list, 3)
     page = request.GET.get('page')
     posts_num = paginator.get_page(page)
-    return render(request, 'home.html', {'blog': posts, 'posts': posts_num})
+    return render(request, 'home.html', {'posts': posts, 'post': posts_num})
 
 
 def detail(request, post_id):
@@ -32,7 +32,7 @@ def create(request):
     post.body = request.GET['body']
     post.pub_date = timezone.datetime.now()
     post.save()
-    return redirect('/blog/' + str(post.id))
+    return redirect('/' + str(post.id))
 
 
 def delete(request, post_id):
