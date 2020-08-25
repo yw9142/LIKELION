@@ -6,7 +6,10 @@ LIKE LION 8th Session
 
 #2. WEB Basic / UI-UX
 
-#3. Django_Basic - CRUD
+#3. Django_Basic
+ 3 - 1 CRUD
+ 
+ 3 - 2 myblogproject
 
 #4. Django - dreamary project
 

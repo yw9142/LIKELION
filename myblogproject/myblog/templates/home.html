@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <main role="main">
+
+        <section class="jumbotron text-center">
+            <div class="container">
+                <h1>yonpark의 Web🎨</h1>
+                <p class="lead text-muted">박용훈을 소개해주는 페이지입니다!</p>
+                <p>
+                    <a href="{% url 'new' %}" class="btn btn-primary my-2">Add Post</a>
+                    <a href="{% url 'create10' %}" class="btn btn-secondary my-2">create 10 Post</a>
+                </p>
+            </div>
+        </section>
+
+        <div class="album py-5 bg-light">
+            <div class="container">
+
+                <div class="row">
+                    {% for post in posts.all %}
+                        <div class="col-md-4">
+                            <div class="card mb-4 shadow-sm">
+                                {% if post.image != '' %} <!-- 이미지가 비어있지 않으면-->
+                                    <img class="card-img-top" src="{{ post.image.url }}" height="225"
+                                         alt=" Card image cap">
+
+                                    {% else %}<!-- 이미지가 비어있다면-->
+                                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
+                                         xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"
+                                         focusable="false" role="img" aria-label="Placeholder: Thumbnail">
+                                        <rect width="100%" height="100%" fill="#55595c"/>
+                                        <text x="50%" y="50%" fill="#eceeef" dy=".3em">No image</text>
+                                    </svg>
+
+                                {% endif %}
+
+                                {#                            <svg#}
+                                {#                                    class="bd-placeholder-img card-img-top"#}
+                                {#                                    width="100%"#}
+                                {#                                    height="225"#}
+                                {#                                    xmlns="http://www.w3.org/2000/svg"#}
+                                {#                                    preserveaspectratio="xMidYMid slice"#}
+                                {#                                    focusable="false"#}
+                                {#                                    role="img"#}
+                                {#                                    aria-label="Placeholder: Thumbnail">#}
+                                {#                                <title>Placeholder</title>#}
+                                {#                                <rect width="100%" height="100%" fill="#55595c"/>#}
+                                {#                                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>#}
+                                {#                            </svg>#}
+                                <div class="card-body">
+                                    <h4>{{ post.title }}</h4>
+                                    <p class="card-text">{{ post.summary }}</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary"
+                                                    onclick="location.href= {% url 'detail' post.id %}">View
+                                            </button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary"
+                                                    onclick="location.href='{% url 'delete' post.id %}';">Del
+                                            </button>
+                                        </div>
+                                        <small class="text-muted">{{ post.pub_date }}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+<footer class="text-muted">
+    <div class="container">
+        <p>Hello, I'm Yonghun 👋
+            <a href="https://github.com/yw9142" target="_blank">Click My Github!</a>
+        </p>
+    </div>
+</footer>
+
+<script
+        src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+<script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+<script
+        src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script>
+    window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')
+</script>
+<script
+        src="/docs/4.5/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf"
+        crossorigin="anonymous"></script>
