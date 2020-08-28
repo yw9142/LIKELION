@@ -10,6 +10,8 @@ LIKE LION 8th Session
  3 - 1 CRUD
  
  3 - 2 myblogproject
+ 
+ 3 - 3 login_logout_signup_auth
 
 #4. Django - dreamary project
 

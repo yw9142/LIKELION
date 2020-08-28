@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="//unpkg.com/bootstrap@4/dist/css/bootstrap.min.css">
+    <script src='//unpkg.com/jquery@3/dist/jquery.min.js'></script>
+    <script src='//unpkg.com/popper.js@1/dist/umd/popper.min.js'></script>
+    <script src='//unpkg.com/bootstrap@4/dist/js/bootstrap.min.js'></script>
+
+</head>
+<body>
+
+<!-- index.html 입니다.  -->
+<!-- 조건문을 통해서 만약 로그인이 상태라면 로그아웃 버튼을 나타내고 -->
+<a class="nav-link" href="{% url 'userpage' %}">userpage</a>
+{% if user.is_authenticated %}
+    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+
+    <!-- 로그인되어 있지 않으면 기존 버튼 그대로 나타낸다. -->
+{% else %}
+    <a class="nav-link" href="{% url 'signup' %}">SignUp</a>
+    <a class="nav-link" href="{% url 'login' %}">Login</a>
+{% endif %}
+</body>
+</html>
