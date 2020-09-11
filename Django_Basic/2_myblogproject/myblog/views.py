@@ -91,3 +91,14 @@ def comments_update(request, post_id, comment_id):
 
     else:
         return render(request, 'comments_update.html', {'post': post, 'comment': comment})
+
+
+def like(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
+
+    if request.user in post.like_users.all():
+        post.like_users.remove(request.user)
+    else:
+        post.like_users.add(request.user)
+
+    return redirect('/' + str(post.id))

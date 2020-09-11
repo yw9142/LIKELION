@@ -23,4 +23,5 @@ urlpatterns = [
                        name='comments_delete'),
                   path('<int:post_id>/comments/<int:comment_id>/update/', views.comments_update,
                        name='comments_update'),
+                  path('<int:post_id>/like/', views.like, name='like'),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
