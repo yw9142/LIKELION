@@ -135,3 +135,21 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Email을 발송할 주체에 대한 설정입니다
+EMAIL_HOST = 'smtp.gmail.com'
+
+# Gmail을 사용하기 위한 Port 번호입니다
+EMAIL_PORT = '587'
+
+# 여기에 여러분의 Gmail 계정을 적어주세요 (* 별이 아닌 실제 메일 계정을 작성합니다. )
+EMAIL_HOST_USER = 'yonpark@likelion.org'
+
+# 여기에 여러분의 Gmail 계정에 대한 비밀번호를 적어주세요 (* 별이 아닌 본인메일의 실제 비밀번호를 입력합니다. )
+EMAIL_HOST_PASSWORD = 'Qkrdydgns12!'
+
+# TLS 사용을 허가합니다. 무슨 뜻일까요?
+EMAIL_USE_TLS = True
+
+# 회신에 대한 기본 설정입니다.
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
