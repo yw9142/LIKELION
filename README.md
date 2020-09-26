@@ -10,9 +10,9 @@ LIKE LION 8th Session
 
 - CRUD
  
-- myblogproject
+- [myblogproject](Django_Basic/2_myblogproject/README.md)
  
-- login_logout_signup_auth
+- [login_logout_signup_auth](Django_Basic/3_sign_up_log_in_auth/README.md)
 
 ---------------------------------------------------------------------------
 #4. dreamary project
