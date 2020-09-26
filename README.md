@@ -23,4 +23,6 @@ LIKE LION 8th Session
 
 #7. Django Rest Framework
 
+#8. [Django - CKEditor](CKEditor/README.md)
+
 서버 실행시켜보려면 SECRET.json을 만들어서 key를 받아와야 합니다.
